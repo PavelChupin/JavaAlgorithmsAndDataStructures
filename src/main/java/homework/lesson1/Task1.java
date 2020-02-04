@@ -39,8 +39,8 @@ public class Task1 {
     private static List<String> getList1() {
         List<String> integers = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
-            for (int j = i; j < arr.length; j++) {
-                for (int k = j; k < arr.length; k++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                for (int k = j + 1; k < arr.length; k++) {
                     if (arr[i] + arr[j] + arr[k] == 0){
                         integers.add(arr[i] + " " + arr[j] + " " + arr[k] + " = 0");
                     }
@@ -54,7 +54,9 @@ public class Task1 {
         List<String> integers = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
+                if (j == i){continue;}
                 for (int k = 0; k < arr.length; k++) {
+                    if (k == i || k == j){continue;}
                     if (arr[i] + arr[j] + arr[k] == 0){
                         integers.add(arr[i] + " " + arr[j] + " " + arr[k] + " = 0");
                     }
