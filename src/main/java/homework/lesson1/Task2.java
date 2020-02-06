@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class Task2 {
-    public static int[] arr = new int[20];
+    public static int[] arr = /*{8, 3, 3, 3, 3, 8, 8, 8}; */new int[8];
 
     static {
         Random r = new Random();
@@ -21,18 +21,12 @@ public class Task2 {
         int max2 = Integer.MIN_VALUE;
         Date dateStart = new Date();
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max1) {
-                if (max1 <= max2) {
-                    max1 = arr[i];
-                } else if (max1 > max2) {
-                    max2 = arr[i];
-                }
-            } else if (arr[i] > max2) {
-                if (max2 <= max1) {
-                    max2 = arr[i];
-                } else if (max2 > max1) {
-                    max1 = arr[i];
-                }
+            if (arr[i] > max1 && arr[i] > max2){
+                if (max1 >= max2){max2 = arr[i];}else {max1 = arr[i];}
+            }else if (arr[i] > max1 && arr[i] < max2){
+                max1 = arr[i];
+            }else if (arr[i] < max1 && arr[i] > max2){
+                max2 = arr[i];
             }
         }
         Date dateEnd = new Date();
