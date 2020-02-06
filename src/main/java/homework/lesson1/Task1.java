@@ -31,9 +31,7 @@ public class Task1 {
     private static void print(List<String> integers, Date dateStart, Date dateEnd) {
         System.out.println("Operation executed " + (dateEnd.getTime() - dateStart.getTime()) + " millsecond.");
         System.out.println("Сложность алгоритма cubic");
-        integers.forEach((o)->{
-            System.out.println(o);
-        });
+        integers.forEach(System.out::println);
     }
 
     private static List<String> getList1() {
