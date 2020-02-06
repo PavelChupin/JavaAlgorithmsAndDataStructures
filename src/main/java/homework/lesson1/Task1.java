@@ -15,21 +15,21 @@ public class Task1 {
 
     public static void main(String[] args) {
         List<String> integers = null;
-        Date dateStart = new Date();
+        long dateStart = System.currentTimeMillis();
         //Первый вариант когда ранее проверенные чяисла уже не участвуют в сравнении
         integers = getList1();
-        Date dateEnd = new Date();
-        print(integers, dateStart, dateEnd);
+        long dateEnd = System.currentTimeMillis();
+        print(integers, dateEnd - dateStart);
 
-        dateStart = new Date();
+        dateStart = System.currentTimeMillis();
         //Второй вариант когда все ранее пройденные числа так же участвуют в сравнении
         integers = getList2();
-        dateEnd = new Date();
-        print(integers, dateStart, dateEnd);
+        dateEnd = System.currentTimeMillis();
+        print(integers, dateEnd - dateStart);
     }
 
-    private static void print(List<String> integers, Date dateStart, Date dateEnd) {
-        System.out.println("Operation executed " + (dateEnd.getTime() - dateStart.getTime()) + " millsecond.");
+    private static void print(List<String> integers, long deltaTime) {
+        System.out.println("Operation executed " + deltaTime + " millsecond.");
         System.out.println("Сложность алгоритма cubic");
         integers.forEach(System.out::println);
     }
