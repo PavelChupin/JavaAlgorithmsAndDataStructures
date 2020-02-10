@@ -12,7 +12,7 @@ public class Array {
         printArr();
 
         //Добавляем элемент
-        add(5);
+        add(3,5);
         printArr();
 
         //Удаляем элемент
@@ -30,10 +30,11 @@ public class Array {
         }
     }
 
-    public static void add(int element) {
+    public static void add(int index, int element) {
         int[] arrTemp = new int[arr.length + 1];
-        System.arraycopy(arr, 0, arrTemp, 0, arr.length);
-        arrTemp[arr.length] = element;
+        System.arraycopy(arr, 0, arrTemp, 0, index);
+        arrTemp[index] = element;
+        System.arraycopy(arr, index, arrTemp, index + 1, arr.length - index);
         arr = arrTemp;
     }
 
