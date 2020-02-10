@@ -12,15 +12,15 @@ public class Main {
         }
     }
 
-    public void add(){
+    public static void add(){
 
     }
 
-    public void del(){
+    public static void del(){
 
     }
 
-    public int find(int element){
+    public static int find(int element){
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == element){
                return i;
