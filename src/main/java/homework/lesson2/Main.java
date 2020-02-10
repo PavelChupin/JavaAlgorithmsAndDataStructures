@@ -4,13 +4,28 @@ import java.util.Random;
 
 public class Main {
     public static int[] arr = new int[1000000];
-    static {
+
+    public static void main(String[] args) {
+        Random r = new Random();
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = Math.random();
+            arr[i] = r.nextInt();
         }
     }
 
-    public static void main(String[] args) {
+    public void add(){
 
+    }
+
+    public void del(){
+
+    }
+
+    public int find(int element){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == element){
+               return i;
+            }
+        }
+        return 0;
     }
 }
