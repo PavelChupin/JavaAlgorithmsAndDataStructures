@@ -1,5 +1,6 @@
 package homework.lesson2;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Array {
@@ -12,7 +13,7 @@ public class Array {
         printArr();
 
         //Добавляем элемент
-        add(3,5);
+        add(6,5);
         printArr();
 
         //Удаляем элемент
@@ -51,9 +52,7 @@ public class Array {
     }
 
     public static void printArr() {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
+        System.out.println(Arrays.toString(arr));
         System.out.println();
     }
 }
