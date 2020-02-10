@@ -3,7 +3,7 @@ package homework.lesson2;
 import java.util.Random;
 
 public class Array {
-    public static final int SIZE = 10;
+    public static final int SIZE = 9;
     public static int[] arr = new int[SIZE];
 
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Array {
         printArr();
 
         //Поиск элемента
-        System.out.println(find(arr.length/2));
+        System.out.println(find(3));
     }
 
     private static void generateMass() {
@@ -40,13 +40,8 @@ public class Array {
 
     public static void del(int index) {
         int[] arrTemp = new int[arr.length - 1];
-        for (int i = 0; i < arrTemp.length; i++) {
-            if (i >= index) {
-                arrTemp[i] = arr[i + 1];
-            } else {
-                arrTemp[i] = arr[i];
-            }
-        }
+        System.arraycopy(arr, 0, arrTemp, 0, index - 1);
+        System.arraycopy(arr, index, arrTemp, index - 1, arr.length - index);
         arr = arrTemp;
     }
 
