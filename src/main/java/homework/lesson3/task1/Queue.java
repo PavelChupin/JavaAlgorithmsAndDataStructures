@@ -1,44 +1,46 @@
 package homework.lesson3.task1;
 
 public class Queue<T> {
+    private int maxSize;
     private T[] queue;
     private int front;
     private int rear;
-    private int size;
+    private int items;
 
-    public Queue(int size) {
-        this.queue = (T[]) new Object[size];
-        this.front = 0;
-        this.rear = 0;
+    public Queue(int s){
+        maxSize = s;
+        queue = (T[]) new Object[maxSize];
+        front = 0;
+        rear = -1;
+        items = 0;
     }
-
-    public void enqueue(T item){
-        if (rear == queue.length - 1){
+    public void insert(T i){
+        if(rear == maxSize-1)
             rear = -1;
-        }
-        queue[++rear] = item;
-        size++;
+        queue[++rear] = i;
+        items++;
     }
 
-    public  T dequeue(){
-        T tmp = queue[front++];
-        if (front == queue.length){
+    public T remove(){
+        T temp = queue[front++];
+        if(front == maxSize)
             front = 0;
-        }
-        size--;
-
-        return tmp;
+        items--;
+        return temp;
     }
 
+    public T peek(){
+        return queue[front];
+    }
     public boolean isEmpty(){
-        return size == 0;
+        return (items==0);
     }
 
     public boolean isFull(){
-        return size == queue.length;
+        return (items==maxSize);
     }
 
     public int size(){
-        return size;
+        return items;
     }
 }
