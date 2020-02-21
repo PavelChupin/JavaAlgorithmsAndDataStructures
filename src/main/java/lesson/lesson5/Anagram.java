@@ -3,12 +3,12 @@ package lesson.lesson5;
 /*
 * abcd
 *
-* a bcd
-* a bdc
 * a cbd
 * a cdb
 * a dbc
 * a dcb
+* ab cd
+* ab dc
 * */
 
 public class Anagram {
