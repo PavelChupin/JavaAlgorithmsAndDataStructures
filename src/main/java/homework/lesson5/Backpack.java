@@ -1,4 +1,4 @@
-package ru.geekbrains.recursion;
+package homework.lesson5;
 
 public class Backpack {
 
@@ -18,6 +18,8 @@ public class Backpack {
             return recursive(weight, val, w,itemNum + 1);
         }
         // TODO вычислить ценность для случаев, когда мы берем и не берем в рюкзак предмет
+
+
         // TODO вернуть ценность для случая с наибольшей ценностью
         return -1;
     }
