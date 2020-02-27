@@ -18,7 +18,7 @@ public class Backpack {
             return recursive(weight, val, w,itemNum + 1);
         }
         // TODO вычислить ценность для случаев, когда мы берем и не берем в рюкзак предмет
-        int valNext = recursive(weight, val, w,itemNum + 1) ;
+        int valNext = recursive(weight, val, w,itemNum + 1);
         int valAdd =  val[itemNum] + recursive(weight, val, w - weight[itemNum],itemNum + 1) ;
 
         // TODO вернуть ценность для случая с наибольшей ценностью
