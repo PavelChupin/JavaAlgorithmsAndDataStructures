@@ -3,6 +3,27 @@ package homework.lesson6;
 public class Tree<T extends Comparable<T>> {
     private Node<T> root;
 
+    public Node<T> min() {
+        Node<T> current, last = null;
+        current = root;
+        while (current != null) {
+            last = current;
+            current = current.leftChild;
+        }
+
+        return last;
+    }
+
+    public Node<T> max() {
+        Node<T> current, last = null;
+        current = root;
+        while (current != null) {
+            last = current;
+            current = current.rightChild;
+        }
+        return last;
+    }
+
     public Node<T> find(T key){
         Node<T> current = root;
         while (current.value != key) {
@@ -24,6 +45,7 @@ public class Tree<T extends Comparable<T>> {
         node.value = value;
         if (root == null){
             root = node;
+            root.level = 0;
         } else {
             Node<T> current = root;
             Node<T> parent;
@@ -33,12 +55,14 @@ public class Tree<T extends Comparable<T>> {
                     current = current.leftChild;
                     if (current == null){
                         parent.leftChild = node;
+                        parent.leftChild.level = parent.level + 1;
                         return;
                     }
                 } else {
                     current = current.rightChild;
                     if (current == null){
                         parent.rightChild = node;
+                        parent.rightChild.level = parent.level + 1;
                         return;
                     }
                 }

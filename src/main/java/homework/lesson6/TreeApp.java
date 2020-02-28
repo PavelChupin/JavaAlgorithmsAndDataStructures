@@ -1,66 +1,36 @@
 package homework.lesson6;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class TreeApp {
     public static void main(String[] args) throws IOException {
+
+        System.out.println(Math.pow(2,6));
         int value;
-        Tree<Integer> theTree = new Tree();
-        theTree.insert(1);
-        theTree.insert(2);
-        theTree.insert(3);
-        theTree.insert(4);
-        theTree.insert(5);
-        theTree.insert(6);
-        theTree.insert(7);
-
-
-        theTree.displayTree();
-        /*
-        while(true){
-            System.out.print("Enter first letter of show, ");
-            System.out.print("insert, find, delete, or traverse: ");
-            int choice = getChar();
-            switch(choice){
-                case 's':
-                    theTree.displayTree();
+        List<Tree<Integer>> trees = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            Tree<Integer> tree = new Tree<>();
+            for (int j = 0; j < (int) Math.pow(2,6); j++) {
+                Random r = new Random();
+                int temp = r.nextInt(100);
+                tree.insert(temp);
+                //Проверяем добавился элемент на глубину 7 - го уровня. Еслид обавился удалим его, 6 уровней были заполнены.
+                if (isCheckLevel(tree,temp)){
+                    tree.delete(temp);
                     break;
-                case 'i':
-                    System.out.print("Enter value to insert: ");
-                    value = getInt();
-                    theTree.insert(new Person());
-                    break;
-                case 'f':
-                    System.out.print("Enter value to find: ");
-                    value = getInt();
-                    Node found = theTree.find(value);
-                    if(found != null){
-                        System.out.print("Found: ");
-                    }
-                    found.display();
-                    System.out.print("\n");
-                    break;
+                }
             }
-        }*/
-    }
-/*
-    public static String getString() throws IOException {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-        String s = br.readLine();
-        return s;
+            trees.add(tree);
+            //tree.displayTree();
+        }
     }
 
-    public static char getChar() throws IOException {
-        String s = getString();
-        return s.charAt(0);
+    private static boolean isCheckLevel(Tree<Integer> tree, int temp) {
+        //Смотрим сколько уровней от добавленного элеманта до головы дерева
+        return tree.find(temp).level >= 7;
     }
-
-    public static int getInt() throws IOException {
-        String s = getString();
-        return Integer.parseInt(s);
-    }*/
 }
 
