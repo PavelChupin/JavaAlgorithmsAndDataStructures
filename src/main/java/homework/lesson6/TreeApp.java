@@ -40,7 +40,7 @@ public class TreeApp {
 
     private static boolean isCheckLevel(Tree<Integer> tree, int temp) {
         //Смотрим сколько уровней от добавленного элеманта до головы дерева
-        return tree.find(temp).level >= 7;
+        return tree.find(temp).level > 6;
     }
 }
 
