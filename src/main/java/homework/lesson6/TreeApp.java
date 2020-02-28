@@ -8,9 +8,11 @@ import java.util.Random;
 public class TreeApp {
     public static void main(String[] args) throws IOException {
         // 1 Task
-        List<Tree<Integer>> trees = new ArrayList<>();
+        int countTree = 20;
         int countMaxElement = (int) Math.pow(2,6);
-        for (int i = 0; i < 20; i++) {
+
+        List<Tree<Integer>> trees = new ArrayList<>();
+        for (int i = 0; i < countTree; i++) {
             Tree<Integer> tree = new Tree<>();
 
             for (int j = 0; j < countMaxElement; j++) {
@@ -34,7 +36,7 @@ public class TreeApp {
                 balanced++;
             }
         }
-        System.out.println(balanced);
+        System.out.println("Процент сбалансированных: " + (balanced/countTree) * 100);
 
     }
 
