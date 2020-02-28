@@ -1,12 +1,12 @@
 package homework.lesson6;
 
-public class Tree<T> {
-    private Node root;
+public class Tree<T extends Comparable<T>> {
+    private Node<T> root;
 
-    public Node find(T key){
-        Node current = root;
+    public Node<T> find(T key){
+        Node<T> current = root;
         while (current.value != key) {
-            if (key < current.value){
+            if (key.compareTo(current.value) < 0){
                 current = current.leftChild;
             } else {
                 current = current.rightChild;
@@ -20,16 +20,16 @@ public class Tree<T> {
     }
 
     public void insert(T value){
-        Node node = new Node();
+        Node<T> node = new Node();
         node.value = value;
         if (root == null){
             root = node;
         } else {
-            Node current = root;
-            Node parent;
+            Node<T> current = root;
+            Node<T> parent;
             while (true) {
                 parent = current;
-                if (value < current.value){
+                if (value.compareTo(current.value) < 0){
                     current = current.leftChild;
                     if (current == null){
                         parent.leftChild = node;
@@ -47,13 +47,13 @@ public class Tree<T> {
     }
 
     public boolean delete(T id){
-        Node current = root;
-        Node parent = root;
+        Node<T> current = root;
+        Node<T> parent = root;
         boolean isLeftChild = true;
 
         while (current.value != id) {
             parent = current;
-            if (id < current.value){
+            if (id.compareTo(current.value) < 0){
                 isLeftChild = true;
                 current = current.leftChild;
             } else {
@@ -96,7 +96,7 @@ public class Tree<T> {
                 parent.rightChild = current.rightChild;
             }
         } else {
-            Node successor = getSuccesor(current);
+            Node<T> successor = getSuccesor(current);
             if (current == root){
                 root = successor;
             }else if(isLeftChild){
@@ -109,10 +109,10 @@ public class Tree<T> {
         return true;
     }
 
-    public Node getSuccesor(Node node){
-        Node successorParent = node;
-        Node successor = node;
-        Node current = node.rightChild;
+    public Node<T> getSuccesor(Node<T> node){
+        Node<T> successorParent = node;
+        Node<T> successor = node;
+        Node<T> current = node.rightChild;
 
         while (current != null) {
             successorParent = successor;
@@ -135,7 +135,7 @@ public class Tree<T> {
         }
     }
 
-    private void preOrder(Node rootNode){
+    private void preOrder(Node<T> rootNode){
         if(rootNode != null){
             rootNode.display();
             preOrder(rootNode.leftChild);
@@ -143,7 +143,7 @@ public class Tree<T> {
         }
     }
 
-    private void postOrder(Node rootNode){
+    private void postOrder(Node<T> rootNode){
         if(rootNode != null){
             postOrder(rootNode.leftChild);
             postOrder(rootNode.rightChild);
@@ -151,7 +151,7 @@ public class Tree<T> {
         }
     }
 
-    private void inOrder(Node rootNode){
+    private void inOrder(Node<T> rootNode){
         if(rootNode != null){
             inOrder(rootNode.leftChild);
             rootNode.display();
@@ -172,7 +172,7 @@ public class Tree<T> {
                 System.out.print(" ");
             }
             while (!stack.isEmpty()) {
-                Node temp = stack.pop();
+                Node<T> temp = stack.pop();
                 if (temp != null){
                     temp.display();
                     localStack.push(temp.leftChild);

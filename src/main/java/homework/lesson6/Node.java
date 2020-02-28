@@ -2,8 +2,8 @@ package homework.lesson6;
 
 public class Node<T> {
     public T value;
-    public Node leftChild;
-    public Node rightChild;
+    public Node<T> leftChild;
+    public Node<T> rightChild;
 
 
     public void display(){

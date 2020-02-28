@@ -7,15 +7,18 @@ import java.io.InputStreamReader;
 public class TreeApp {
     public static void main(String[] args) throws IOException {
         int value;
-        Tree theTree = new Tree();
-        theTree.insert(new Person());
-        theTree.insert(new Person());
-        theTree.insert(new Person());
-        theTree.insert(new Person());
-        theTree.insert(new Person());
-        theTree.insert(new Person());
-        theTree.insert(new Person());
+        Tree<Integer> theTree = new Tree();
+        theTree.insert(1);
+        theTree.insert(2);
+        theTree.insert(3);
+        theTree.insert(4);
+        theTree.insert(5);
+        theTree.insert(6);
+        theTree.insert(7);
 
+
+        theTree.displayTree();
+        /*
         while(true){
             System.out.print("Enter first letter of show, ");
             System.out.print("insert, find, delete, or traverse: ");
@@ -40,9 +43,9 @@ public class TreeApp {
                     System.out.print("\n");
                     break;
             }
-        }
+        }*/
     }
-
+/*
     public static String getString() throws IOException {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
@@ -58,6 +61,6 @@ public class TreeApp {
     public static int getInt() throws IOException {
         String s = getString();
         return Integer.parseInt(s);
-    }
+    }*/
 }
 
