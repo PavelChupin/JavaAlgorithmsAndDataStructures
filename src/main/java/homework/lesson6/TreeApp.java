@@ -7,9 +7,7 @@ import java.util.Random;
 
 public class TreeApp {
     public static void main(String[] args) throws IOException {
-
-        System.out.println(Math.pow(2,6));
-        int value;
+        // 1 Task
         List<Tree<Integer>> trees = new ArrayList<>();
         int countMaxElement = (int) Math.pow(2,6);
         for (int i = 0; i < 20; i++) {
@@ -17,7 +15,7 @@ public class TreeApp {
 
             for (int j = 0; j < countMaxElement; j++) {
                 Random r = new Random();
-                int temp = r.nextInt(100);
+                int temp = r.nextInt(200) - 100;
                 tree.insert(temp);
                 //Проверяем добавился элемент на глубину 7 - го уровня. Если добавился удалим его, 6 уровней были заполнены.
                 if (isCheckLevel(tree,temp)){
@@ -26,8 +24,18 @@ public class TreeApp {
                 }
             }
             trees.add(tree);
-            //tree.displayTree();
+            tree.displayTree();
         }
+
+        // 2 Task
+        int balanced = 0;
+        for (Tree localTree : trees) {
+            if (localTree.isBalanced(localTree.getRoot())) {
+                balanced++;
+            }
+        }
+        System.out.println(balanced);
+
     }
 
     private static boolean isCheckLevel(Tree<Integer> tree, int temp) {

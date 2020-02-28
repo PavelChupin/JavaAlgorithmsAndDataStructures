@@ -183,14 +183,16 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
+
+
     public void displayTree(){
-        Stack stack = new Stack(100);
+        Stack stack = new Stack(9999);
         stack.push(root);
         int nBlanks = 32;
         boolean isRowEmpty = false;
 
         while (!isRowEmpty) {
-            Stack localStack = new Stack(100);
+            Stack localStack = new Stack(9999);
             isRowEmpty = true;
             for(int i=0;i<nBlanks;i++){
                 System.out.print(" ");
@@ -219,6 +221,25 @@ public class Tree<T extends Comparable<T>> {
             }
             System.out.println("..........................................");
         }
+    }
+
+    public Node<T> getRoot() {
+        return root;
+    }
+
+    public boolean isBalanced(Node<T> node) {
+        int left = 0, right = 0;
+        if (node == null) {
+            return true;
+        }
+        if (node.leftChild != null){left = node.leftChild.level;}
+        if (node.rightChild != null){right = node.rightChild.level;}
+        if (Math.abs(left - right) <= 1
+                && isBalanced(node.leftChild)
+                && isBalanced(node.rightChild)) {
+            return true;
+        }
+        return false;
     }
 
 }
