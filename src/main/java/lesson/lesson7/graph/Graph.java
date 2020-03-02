@@ -9,7 +9,7 @@ public class Graph {
         this.adjMap = new HashMap<>();
     }
 
-    public void assVertex(String label){
+    public void addVertex(String label){
         adjMap.putIfAbsent(new Vertex(label),new ArrayList<>());
     }
 
@@ -40,7 +40,54 @@ public class Graph {
         }
     }
 
-    public void depthFirstTraversal(){
+    public Set<Vertex> depthFirstSearch(Vertex root){
         Set<Vertex> visited = new LinkedHashSet<>();
+        Stack<Vertex> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Vertex vert = stack.pop();
+            if (!visited.contains(vert)){
+                visited.add(vert);
+                adjMap.get(vert).forEach(stack::push);
+            }
+        }
+        return visited;
+    }
+
+    public Set<Vertex> breadthFirstSearch(Vertex root){
+        Set<Vertex> visited = new LinkedHashSet<>();
+        Queue<Vertex> queue = new LinkedList<>();
+        queue.add(root);
+        visited.add(root);
+        while (!queue.isEmpty()){
+           Vertex vert = queue.poll();
+           adjMap.get(vert).forEach(v -> {
+               if (!visited.contains(v)){
+                   visited.add(v);
+                   queue.add(v);
+               }
+           });
+        }
+
+
+        return visited;
+    }
+
+    public static void main(String[] args) {
+        Graph graph = new Graph();
+        graph.addVertex("Bob");
+        graph.addVertex("Alice");
+        graph.addVertex("Mark");
+        graph.addVertex("Rob");
+        graph.addVertex("Maria");
+        graph.addEdge("Bob", "Alice");
+        graph.addEdge("Bob", "Rob");
+        graph.addEdge("Alice", "Mark");
+        graph.addEdge("Rob", "Mark");
+        graph.addEdge("Alice", "Maria");
+        graph.addEdge("Rob", "Maria");
+
+        System.out.println(graph.depthFirstSearch(new Vertex("Bob")));
+        System.out.println(graph.breadthFirstSearch(new Vertex("Bob")));
     }
 }
