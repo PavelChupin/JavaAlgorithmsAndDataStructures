@@ -61,12 +61,12 @@ public class Graph {
         visited.add(root);
         while (!queue.isEmpty()){
            Vertex vert = queue.poll();
-           adjMap.get(vert).forEach(v -> {
-               if (!visited.contains(v)){
-                   visited.add(v);
-                   queue.add(v);
-               }
-           });
+            for (Vertex v : adjMap.get(vert)) {
+                if (!visited.contains(v)) {
+                    visited.add(v);
+                    queue.add(v);
+                }
+            }
         }
 
 
