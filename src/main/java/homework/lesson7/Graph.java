@@ -54,6 +54,23 @@ public class Graph {
         return visited;
     }
 
+    public Set<Vertex> depthFirstSearchObject(Vertex root, Vertex search){
+        Set<Vertex> visited = new LinkedHashSet<>();
+        Stack<Vertex> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Vertex vert = stack.pop();
+            if (vert.equals(search)){
+                return visited;
+            }
+            if (!visited.contains(vert)){
+                visited.add(vert);
+                adjMap.get(vert).forEach(stack::push);
+            }
+        }
+        return visited;
+    }
+
     public Set<Vertex> breadthFirstSearch(Vertex root){
         Set<Vertex> visited = new LinkedHashSet<>();
         Queue<Vertex> queue = new LinkedList<>();
@@ -69,6 +86,26 @@ public class Graph {
             }
         }
 
+        return visited;
+    }
+
+    public Set<Vertex> breadthFirstSearchObject(Vertex root, Vertex search){
+        Set<Vertex> visited = new LinkedHashSet<>();
+        Queue<Vertex> queue = new LinkedList<>();
+        queue.add(root);
+        visited.add(root);
+        while (!queue.isEmpty()){
+            Vertex vert = queue.poll();
+            for (Vertex v : adjMap.get(vert)) {
+                if (v.equals(search)){
+                    return visited;
+                }
+                if (!visited.contains(v)) {
+                    visited.add(v);
+                    queue.add(v);
+                }
+            }
+        }
 
         return visited;
     }
